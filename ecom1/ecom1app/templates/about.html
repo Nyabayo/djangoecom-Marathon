@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <!-- Header -->
+    <header class="bg-dark py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-white">
+                <h1 class="display-4 fw-bolder">Shop in Style</h1>
+                <p class="lead fw-normal text-white-50 mb-0">Let’s go shopping, we are the best in town!</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <div class="container mt-5 mb-5">
+        <div class="row">
+            <div class="col-lg-6">
+                <h1 class="mb-4">About Us</h1>
+                <p>
+                    Welcome to <strong>Ecom</strong>, your one-stop shop for quality products and exceptional customer service.
+                    We are committed to providing you with the best online shopping experience, featuring a wide selection of products
+                    at competitive prices.
+                </p>
+                <p>
+                    Our journey began with a simple goal: to make shopping convenient, reliable, and enjoyable for everyone.
+                    Since our inception, we have worked tirelessly to build a platform that combines innovation, trust, and value.
+                </p>
+            </div>
+            <div class="col-lg-6">
+                <img src="{% static 'images/about_us.jpg' %}" alt="About Us" class="img-fluid rounded">
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-lg-12">
+                <h2 class="mb-3">Our Mission</h2>
+                <p>
+                    To offer high-quality products that meet our customers' needs while ensuring a seamless shopping experience.
+                </p>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-lg-12">
+                <h2 class="mb-3">Why Choose Us?</h2>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Wide range of products to suit every taste and need.</li>
+                    <li class="list-group-item">Secure payment options for peace of mind.</li>
+                    <li class="list-group-item">Fast and reliable delivery to your doorstep.</li>
+                    <li class="list-group-item">Outstanding customer support whenever you need it.</li>
+                </ul>
+            </div>
+        </div>
+
+        <p class="mt-4">
+            Thank you for choosing <strong>Ecom</strong>. We look forward to serving you!
+        </p>
+    </div>
+{% endblock %}
