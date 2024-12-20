@@ -1,8 +1,15 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .models import Product  # Import the Product model
 from .forms import SignUpForm
+
+# Product view - individual product page
+def product(request, pk):
+    # Use get_object_or_404 to handle missing products gracefully
+    product = get_object_or_404(Product, pk=pk)
+    return render(request, 'product.html', {'product': product})
+
 
 # Home view
 def home(request):

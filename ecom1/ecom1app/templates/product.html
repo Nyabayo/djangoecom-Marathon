@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Header-->
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">{{ product.name }}</h1>
+            <p class="lead fw-normal text-white-50 mb-0">Details about the product</p>
+        </div>
+    </div>
+</header>
+
+<!-- Product Details Section-->
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5">
+            <div class="col-lg-6">
+                <img class="img-fluid rounded" src="{{ product.image.url }}" alt="{{ product.name }}" />
+            </div>
+            <div class="col-lg-6">
+                <!-- Product details -->
+                <h1 class="display-5">{{ product.name }}</h1>
+                <p class="lead">
+                    {% if product.is_sale %}
+                        <div class="d-flex justify-content-center small text-warning mb-2">
+                            <div class="bi-star-fill"></div>
+                            &nbsp;&nbsp;Sale!&nbsp;&nbsp;
+                            <div class="bi-star-fill"></div>
+                        </div>
+                        <strike>
+                            Ksh.{{ product.price }}
+                        </strike>
+                        &nbsp; Ksh.{{ product.sale_price }}
+                    {% else %}
+                        Ksh.{{ product.price }}
+                    {% endif %}
+                </p>
+                <p>{{ product.description }}</p>
+
+                <!-- Add to Cart Button -->
+                <div class="mt-4">
+                    <button class="btn btn-primary">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}
