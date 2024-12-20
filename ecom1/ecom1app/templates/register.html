@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <!-- Header -->
+    <header class="bg-dark py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-white">
+                <h1 class="display-4 fw-bolder">Register</h1>
+                <p class="lead fw-normal text-white-50 mb-0">Register for a User Account</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Register Section -->
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <!-- Corrected action URL to point to the register view -->
+                <form method="POST" action="{% url 'register' %}">
+                    {% csrf_token %}
+                    <!-- Render form fields -->
+                    {{ form.as_p }}
+                    <br/><br/>
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </form>
+
+                <!-- Display messages if present -->
+                <div class="mt-3">
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags|default:'info' }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
