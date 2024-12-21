@@ -1,8 +1,21 @@
+from django.contrib.messages.api import success
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .models import Product  # Import the Product model
+from .models import Product, Category  # Import the Product model, Category model
 from .forms import SignUpForm
+
+# Category pages view
+def category(request, foo):
+    foo = foo.replace('-', ' ')  # Grab the category from the URL
+    try:
+        # Look up the category
+        category = Category.objects.get(name=foo)
+        products = Product.objects.filter(category=category)
+        return render(request, 'category.html', {'products': products, 'category': category})
+    except Category.DoesNotExist:
+        messages.error(request, "Category doesn't exist")
+        return redirect('home')
 
 # Product view - individual product page
 def product(request, pk):
@@ -10,11 +23,11 @@ def product(request, pk):
     product = get_object_or_404(Product, pk=pk)
     return render(request, 'product.html', {'product': product})
 
-
 # Home view
 def home(request):
     products = Product.objects.all()  # Fetch products from the database
-    return render(request, 'home.html', {'products': products})
+    categories = Category.objects.all()  # Fetch all categories from the database
+    return render(request, 'home.html', {'products': products, 'categories': categories})
 
 # About view
 def about(request):

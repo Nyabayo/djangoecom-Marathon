@@ -8,4 +8,5 @@ urlpatterns = [
     path('logout/', views.logout_user, name='logout'),  # Logout page
     path('register/', views.register_user, name='register'),  # Register page
     path('product/<int:pk>/', views.product, name='product'),  # Single product page
+    path('category/<str:foo>/', views.category, name='category'),  # Corrected path to pass 'foo'
 ]
